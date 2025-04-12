@@ -1,0 +1,11 @@
+@use './functions' as *;
+
+:root {
+    --color-light: #F6FF8E;
+    --color-accent: #7167DC;
+    --color-accent-active: #ea00f6;
+    --color-success: #1ed23f;
+    --color-white: #ffff;
+    --container-width: #{rem(1600)};
+    --container-padding-x: #{rem(16)};
+}

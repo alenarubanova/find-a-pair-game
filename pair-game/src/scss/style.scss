@@ -1,0 +1,92 @@
+@use './normalize';
+@use './functions' as *;
+@use './variables' as *;
+
+body {
+    background-color: var(--color-light);
+}
+
+.container {
+    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    margin-inline: auto; // элемент по горизонтали внутри его родителя
+    padding-inline: var(--container-padding-x);
+}
+
+.game {
+    display: grid;
+    grid-template-columns: repeat(4, rem(170));
+    grid-column-gap: rem(30);
+    grid-row-gap: rem(30);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    &-card {
+        padding: rem(50) rem(10);
+        background-color: var(--color-accent);
+        max-width: rem(150);
+        aspect-ratio: 1/1;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: rem(10);
+        display: grid;
+        place-items: center;
+        transition: box-shadow 0.3s ease, background-color 0.3s ease;
+
+        &__opened {
+            background-color: var(--color-accent-active);
+        }
+
+        &__success {
+            background-color: var(--color-success);
+        }
+
+        &:hover {
+            box-shadow: 0 8px 16px rgba(50, 5, 51, 0.5);
+        }
+
+        &:active {
+            background-color: var(--color-accent-active);
+        }
+
+        &__number {
+            position: absolute;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            font-size: rem(50);
+            color: var(--color-white);
+        }
+    }
+}
+
+.modal-restart {
+    all: unset;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--color-accent-active);
+    padding: rem(20) rem(50);
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display: none;
+
+    &__title {
+        font-size: rem(25);
+        color: var(--color-white);
+        margin-bottom: rem(10);
+    }
+
+    &__button {
+        padding: rem(10) rem(30);
+        background-color: var(--color-success);
+        border: none;
+        border-radius: rem(20);
+        color: var(--color-white);
+        font-size: rem(20);
+        font-weight: 600;
+    }
+}
